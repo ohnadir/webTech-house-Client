@@ -1,0 +1,56 @@
+[
+    {
+        "id":"101",
+        "name":"Motherboard",
+        "img":"https://i.ibb.co/QkcZkC8/motherboard.jpg",
+        "info":"",
+        "orderQuantity":"500",
+        "quantity":"50000",
+        "price":"110"
+    },
+    {
+        "id":"102",
+        "name":"Graphs Card",
+        "img":"https://i.ibb.co/ZSsSs93/geforce-gtx1050ti-4g-v-01-500x500.jpg",
+        "info":"",
+        "orderQuantity":"2000",
+        "quantity":"40000",
+        "price":"500"
+    },
+    {
+        "id":"103",
+        "name":"SSD",
+        "img":"https://i.ibb.co/cr7y0G7/ex900-500x500.jpg",
+        "info":"",
+        "orderQuantity":"600",
+        "quantity":"20000",
+        "price":"35"
+    },
+    {
+        "id":"104",
+        "name":"HDMI Cable",
+        "img":"https://i.ibb.co/BsM9450/aacbg-3-500x500.jpg",
+        "info":"",
+        "orderQuantity":"1200",
+        "quantity":"60000",
+        "price":"5"
+    },
+    {
+        "id":"105",
+        "name":"Processor",
+        "img":"https://i.ibb.co/X742jYn/i5-10400-bulk-228x228.jpg",
+        "info":"",
+        "orderQuantity":"800",
+        "quantity":"30000",
+        "price":"120"
+    },
+    {
+        "id":"106",
+        "name":"Router",
+        "img":"https://i.ibb.co/CMf2hPm/router.jpg",
+        "info":"",
+        "orderQuantity":"1000",
+        "quantity":"50000",
+        "price":"15"
+    }
+]
