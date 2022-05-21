@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import Loading from '../../Page/Shared/Loading'
 import { async } from '@firebase/util';
@@ -11,13 +11,30 @@ import { toast } from 'react-toastify';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [email, setEmail]= useState('')
-    const [signInWithGoogle, gUser, loading, gError] = useSignInWithGoogle(auth);
+    const [email, setEmail] = useState('');
+    const navigate = useNavigate();
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-    const onSubmit = data => console.log(data);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useSignInWithEmailAndPassword(auth);
+    const onSubmit = data => {
+        signInWithEmailAndPassword(data.email, data.password);
+        console.log(data)
+    };
 
     if (sending) {
         return <Loading></Loading>;
+    }
+    if (user || gUser ) {
+        navigate('/home')
+    }
+    let signInError;
+    if ( error || gError) {
+        signInError = <p className='text-red-600'><small>{gError?.message} || {error?.message}</small></p>
     }
 
     const handleEmail = (event) => {
@@ -73,6 +90,7 @@ const Login = () => {
                             {errors.password?.type === 'minLength' && <span className='text-red-600 text-sm'>{errors.password.message}</span>}
                         </label>
                         <button onClick={handleRestPassword} className='mb-2 float-right text-red-600'>Forgotten Password ?</button>
+                        {signInError}
                         <input className='w-full bg-accent mb-1 py-[5px] rounded-lg' type="submit" value='Login' />
                         <p className='text-right mb-6'>New to WebTech ? <Link className='text-red-600' to='/signup'>Create new Account</Link></p>
                         <div
