@@ -1,0 +1,23 @@
+[
+    {
+        "_id": "201",
+        "name":"Tom Hanks",
+        "img": "https://i.ibb.co/Y3jdMwy/hanks.jpg",
+        "rating": "5",
+        "review": "Went to the previous generation platform and currently using an i9-9900K. 10th generation ain't too bad, but it's best to wait on 11th generation Rocket Lake."
+    },
+    {
+        "_id": "202",
+        "name":"Paul Walker",
+        "img": "https://i.ibb.co/nC0gW2c/walker.jpg ",
+        "rating": "4.5",
+        "review": "Went to the previous generation platform and currently using an i9-9900K. 10th generation ain't too bad, but it's best to wait on 11th generation Rocket Lake."
+    },
+    {
+        "_id": "203",
+        "name":"Jason Statham",
+        "img": "https://i.ibb.co/4KQjWcQ/jason.jpg",
+        "rating": "4",
+        "review": "Went to the previous generation platform and currently using an i9-9900K. 10th generation ain't too bad, but it's best to wait on 11th generation Rocket Lake."
+    }
+]

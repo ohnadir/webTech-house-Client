@@ -4,7 +4,6 @@ import Navbar from "./Page/Shared/Navbar/Navbar";
 import  Home from "./Page/Home/Home";
 import  Blogs from "./Page/Blogs/Blogs";
 import  NotFoundPage from "./Page/NotFoundPage/NotFoundPage";
-import  Reviews from "./Page/Review/Review";
 import  Login from "./Page/Login/Login";
 import  Signup from "./Page/Login/Signup";
 
@@ -18,7 +17,6 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/signup' element={<Signup/>} ></Route>
         <Route path='/blogs' element={<Blogs/>}></Route>
-        <Route path='/review' element={<Reviews/>}></Route>
         <Route path='*' element={<NotFoundPage/>}></Route>
       </Routes>
       
