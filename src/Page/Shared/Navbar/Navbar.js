@@ -20,6 +20,9 @@ const Navbar = () => {
         <CustomLink to='/review'>Review</CustomLink>
         <CustomLink to='/blogs'>Blogs</CustomLink>
         {
+            user && <CustomLink to='/dashboard'>Dashboard</CustomLink>
+        }
+        {
             user ?
                 <button onClick={handleSignOut}>Sign out</button>
                 : 

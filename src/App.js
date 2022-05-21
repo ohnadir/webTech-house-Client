@@ -8,6 +8,7 @@ import  Blogs from "./Page/Blogs/Blogs";
 import  NotFoundPage from "./Page/NotFoundPage/NotFoundPage";
 import  Login from "./Page/Login/Login";
 import  Signup from "./Page/Login/Signup";
+import Dashboard from './Page/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/signup' element={<Signup/>} ></Route>
         <Route path='/blogs' element={<Blogs/>}></Route>
+        <Route path='/dashboard' element={<Dashboard/>}></Route>
         <Route path='*' element={<NotFoundPage/>}></Route>
       </Routes>
       <ToastContainer/>
