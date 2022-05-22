@@ -5,13 +5,18 @@ import auth from '../Login/firebase.init';
 const PurchaseModal = ({ purchase, setPurchase }) => {
     const { name, img, price, info, orderQuantity, quantity, _id } = purchase;
     const [user] = useAuthState(auth);
+    
     const handleSubmit = event => {
+        const orderAmount= event.target.quantity.value
+        if (orderAmount < orderQuantity) {
+            return alert('please Enter Order Quantity 500 or Longer')
+        }
         event.preventDefault();
         const purchase = {
             purchaseProduct: event.target.productName.value,
             buyerName: event.target.name.value,
             buyerEmail: event.target.email.value,
-            orderQuantity: event.target.quantity.value,
+            orderAmount,
             phone: event.target.phone.value,
         }
         console.log(purchase);
@@ -27,9 +32,13 @@ const PurchaseModal = ({ purchase, setPurchase }) => {
                         <input type="text" name="productName" disabled  value={name} className="input input-bordered w-full max-w-xs" />
                         <input type="text" name="name" disabled  value={user?.displayName || ''} className="input input-bordered w-full max-w-xs" />
                         <input type="text" name="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w-xs" />
-                        <input type="number" name="quantity" placeholder='Order Quantity' className="input input-bordered w-full max-w-xs" />
-                        <input type="number" name="phone" placeholder='Phone Number' className="input input-bordered w-full max-w-xs" />
-                        <input type="submit" value="Purchase" className="input cursor-pointer input-bordered w-full max-w-xs bg-[#3A4256] text-white" />
+                        <input required type="number" name="quantity" placeholder='Order Quantity' className="input input-bordered w-full max-w-xs" />
+                        <input required type="number" name="phone" placeholder='Phone Number' className="input input-bordered w-full max-w-xs" />
+                        <input
+                            disabled={quantity === 0}
+                            type="submit"
+                            value="Purchase"
+                            className="input cursor-pointer input-bordered w-full max-w-xs bg-[#3A4256] text-white" />
                     </form>
                 </div>
             </div>
