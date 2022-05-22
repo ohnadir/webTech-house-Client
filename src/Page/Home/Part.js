@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Part = ({ part, setPurchase }) => {
-    const { name, img, price, info, orderQuantity, quantity } = part;
+const Part = ({ part }) => {
+    const { name, img, price, info, orderQuantity, quantity, _id } = part;
     return (
         <div>
             <div className='shadow-xl'>
@@ -13,12 +14,13 @@ const Part = ({ part, setPurchase }) => {
                     <p>Available Quantity: {quantity}</p>
                     <p>Price per Unit: <span className='font-bold'>${price}</span></p>
                 </div>
-                <div className="mt-2 w-full">
-                <label
-                    htmlFor="purchaseModal"
-                    onClick={()=>setPurchase(part)}
-                    className='bg-accent block cursor-pointer text-center uppercase text-white w-full px-2 py-[4px]' >purchase</label>
-                </div>
+
+                <Link to={`/purchase/${_id}`}>
+                    <button
+                        className='bg-accent uppercase text-white w-full px-2 py-[4px]'
+                    >purchase</button>
+                </Link>
+                
                 
             </div>
         </div>

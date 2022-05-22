@@ -3,6 +3,10 @@ import React from 'react';
 const PurchaseModal = ({purchase, setPurchase}) => {
     return (
         <div>
+            <label
+                    htmlFor="purchaseModal"
+                    className='bg-accent block cursor-pointer text-center uppercase text-white w-full px-2 py-[4px]'
+                    >purchase</label>
             <input type="checkbox" id="purchaseModal" class="modal-toggle" />
             <div class="modal">
                 <div class="modal-box relative">
