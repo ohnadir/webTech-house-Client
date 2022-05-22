@@ -26,7 +26,7 @@ const Login = () => {
         console.log(data)
     };
 
-    if (sending) {
+    if (sending || gLoading || loading) {
         return <Loading></Loading>;
     }
     if (user || gUser ) {

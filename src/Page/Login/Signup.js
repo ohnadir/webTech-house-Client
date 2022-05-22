@@ -1,8 +1,9 @@
 import { async } from '@firebase/util';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
+import useToken from '../../Hooks/useToken';
 import Loading from '../Shared/Loading';
 import auth from './firebase.init';
 
@@ -17,20 +18,27 @@ const Signup = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    const [token] = useToken(user || gUser);
     
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({displayName: data.name})
         console.log(data)
     };
+
+    useEffect(() => {
+        if (token) {
+            navigate('/home')
+        }
+    }, [token, navigate]);
+
+    
     if (loading || GLoading || updating) {
         return <Loading/>
     }
-    if (user || gUser || updatingError) {
-        navigate('/home')
-    }
+    
     let signInError;
-    if ( error || gError) {
+    if ( error || gError || updatingError) {
         signInError = <p className='text-red-600'><small>{gError?.message} || {error?.message}</small></p>
     }
     const handleGoogleSignIn = () => {
