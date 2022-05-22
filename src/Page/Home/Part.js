@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Part = ({ part }) => {
+const Part = ({ part, setPurchase }) => {
     const { name, img, price, info, orderQuantity, quantity } = part;
     return (
         <div>
@@ -13,7 +13,13 @@ const Part = ({ part }) => {
                     <p>Available Quantity: {quantity}</p>
                     <p>Price per Unit: <span className='font-bold'>${price}</span></p>
                 </div>
-                <button className='bg-cyan-600 text-white w-full py-[5px] mt-2'>Purchase</button>
+                <div className="mt-2 w-full">
+                <label
+                    htmlFor="purchaseModal"
+                    onClick={()=>setPurchase(part)}
+                    className='bg-accent block cursor-pointer text-center uppercase text-white w-full px-2 py-[4px]' >purchase</label>
+                </div>
+                
             </div>
         </div>
     );
