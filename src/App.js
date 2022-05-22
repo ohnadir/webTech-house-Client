@@ -11,6 +11,9 @@ import  Signup from "./Page/Login/Signup";
 import  RequireAuth from "./Page/Login/RequireAuth";
 import Dashboard from './Page/Dashboard/Dashboard';
 import Purchase from './Page/Purchase/Purchase';
+import MyOrders from './Page/Dashboard/MyOrders';
+import MyProfile from './Page/Dashboard/MyProfile';
+import AddReview from './Page/Dashboard/AddReview';
 
 
 function App() {
@@ -25,8 +28,12 @@ function App() {
         <Route path='/purchase/:id' element={
           <RequireAuth><Purchase/></RequireAuth>
         }></Route>
-        <Route path='/blogs' element={<Blogs/>}></Route>
-        <Route path='/dashboard' element={<Dashboard/>}></Route>
+        <Route path='/blogs' element={<Blogs />}></Route>
+        <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
+            <Route index  element={<MyProfile/>}></Route>
+            <Route path='myOrders' element={<MyOrders/>}></Route>
+            <Route path='addReview' element={<AddReview/>}></Route>
+        </Route>
         <Route path='*' element={<NotFoundPage/>}></Route>
       </Routes>
       <ToastContainer/>
