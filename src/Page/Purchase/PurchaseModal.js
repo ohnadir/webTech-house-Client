@@ -3,7 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../Login/firebase.init';
 
 const PurchaseModal = ({ purchase, setPurchase }) => {
-    const { name, img, price, info, orderQuantity, quantity, _id } = purchase;
+    const { name, orderQuantity, quantity, _id } = purchase;
     const [user] = useAuthState(auth);
     
     // function for update quantity after buyer purchase
@@ -40,7 +40,15 @@ const PurchaseModal = ({ purchase, setPurchase }) => {
             orderAmount,
             phone: event.target.phone.value,
         }
-        console.log(purchase);
+        fetch('http://localhost:5000/purchase', {
+            method: "POST",
+            body: JSON.stringify(purchase),
+            headers: {
+                'Content-type': 'application/json'
+            },
+        })
+        .then(res => res.json())
+        .then(data=> console.log(data))
     };
     return (
         <div>
