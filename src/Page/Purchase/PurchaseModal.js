@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../Login/firebase.init';
 
 const PurchaseModal = ({ purchase, setPurchase }) => {
@@ -48,7 +49,15 @@ const PurchaseModal = ({ purchase, setPurchase }) => {
             },
         })
         .then(res => res.json())
-        .then(data=> console.log(data))
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success('Purchase Item Successfully');
+                    event.target.reset();
+                    setPurchase(null)
+                } else {
+                    toast.error('Try Again')
+                }   
+            })
     };
     return (
         <div>
