@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../Login/firebase.init';
 
@@ -6,12 +6,33 @@ const PurchaseModal = ({ purchase, setPurchase }) => {
     const { name, img, price, info, orderQuantity, quantity, _id } = purchase;
     const [user] = useAuthState(auth);
     
+    // function for update quantity after buyer purchase
+    const handleQuantity = ([quantity, orderAmount]) => {
+        const newQuantity = parseInt(quantity) - parseInt(orderAmount);
+
+        fetch(`http://localhost:5000/parts/${_id}`, {
+            method: "PUT",
+            body: JSON.stringify({newQuantity: newQuantity}),
+            headers: {
+                'content-type' : 'application/json'
+            }
+            })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            
+            });
+    }
+
+    // handle purchase function
     const handleSubmit = event => {
+        event.preventDefault();
         const orderAmount= event.target.quantity.value
         if (orderAmount < orderQuantity) {
             return alert('please Enter Order Quantity 500 or Longer')
         }
-        event.preventDefault();
+        handleQuantity([quantity, orderAmount]);
+        
         const purchase = {
             purchaseProduct: event.target.productName.value,
             buyerName: event.target.name.value,
