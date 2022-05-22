@@ -1,8 +1,9 @@
 import React from 'react';
 import CrossFlag from '../../assets/flags-crossed.png'
 import Users from '../../assets/user.png'
-import Projects from '../../assets/project.png'
-import Likes from '../../assets/thumb-up.png'
+import Projects from '../../assets/project.png';
+import Likes from '../../assets/thumb-up.png';
+import CountUp from 'react-countup';
 
 const BusinessSummary = () => {
     return (
@@ -11,22 +12,23 @@ const BusinessSummary = () => {
             <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6 mx-auto'>
                 <div className='mx-auto text-center'>
                     <img className='w-20 mx-auto mb-4' src={CrossFlag} alt="" />
-                    <p>150</p>
+                    <p><CountUp end={150} /></p>
+                    
                     <p>Countries</p>
                 </div>
                 <div className='mx-auto text-center'>
                     <img className='w-20 mx-auto mb-4' src={Users} alt="" />
-                    <p>535+</p>
+                    <p><CountUp end={535} />+</p>
                     <p>Projects</p>
                 </div>
                 <div className='mx-auto text-center'>
                     <img className='w-20 mx-auto mb-4' src={Projects} alt="" />
-                    <p>237+</p>
+                    <p><CountUp end={237} />+</p>
                     <p>Happy Clients</p>
                 </div>
                 <div className='mx-auto text-center'>
                     <img className='w-20 mx-auto mb-4' src={Likes} alt="" />
-                    <p>432+</p>
+                    <p><CountUp end={432} />+</p>
                     <p>FeedBack</p>
                 </div>
             </div>
