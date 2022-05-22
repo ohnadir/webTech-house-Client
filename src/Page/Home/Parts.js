@@ -3,6 +3,7 @@ import Part from './Part';
 
 const Parts = () => {
     const [parts, setParts] = useState([]);
+    
     useEffect(() => {
         fetch('http://localhost:5000/parts')
             .then(res => res.json())
@@ -19,7 +20,6 @@ const Parts = () => {
                     ></Part>)
                 }
             </div>
-            
         </div>
     );
 };
