@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import auth from '../Login/firebase.init';
 
 const PurchaseModal = ({ purchase, setPurchase }) => {
-    const { name, orderQuantity, quantity, _id } = purchase;
+    const { name, orderQuantity, quantity, _id, price } = purchase;
     const [user] = useAuthState(auth);
     
     // function for update quantity after buyer purchase
@@ -28,7 +28,8 @@ const PurchaseModal = ({ purchase, setPurchase }) => {
     // handle purchase function
     const handleSubmit = event => {
         event.preventDefault();
-        const orderAmount= event.target.quantity.value
+        const orderAmount = event.target.quantity.value
+        const totalPrice = parseInt(price) * parseInt(orderAmount);
         if (orderAmount < orderQuantity) {
             return alert('please Enter Order Quantity 500 or Longer')
         }
@@ -39,6 +40,7 @@ const PurchaseModal = ({ purchase, setPurchase }) => {
             buyerName: event.target.name.value,
             buyerEmail: event.target.email.value,
             orderAmount,
+            totalPrice,
             phone: event.target.phone.value,
         }
         fetch('http://localhost:5000/purchase', {

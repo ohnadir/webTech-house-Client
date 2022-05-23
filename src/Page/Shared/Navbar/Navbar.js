@@ -34,16 +34,18 @@ const Navbar = () => {
     return (
         <div className=''>
             <div className='flex items-center h-14 justify-between text-black  relative z-50'>
-                <div>
+                <FontAwesomeIcon
+                    icon={open ? faTimes : faBars}
+                    onClick={() => setOpen(!open)}
+                    className="text-black w-6 h-6 cursor-pointer md:hidden"/>
+                <div className=''>
                     <span className='cursor-pointer' onClick={()=>navigate('/home')}>WebTech House</span>
                 </div>
                 <div className='flex gap-6 items-center hidden md:flex'>
                     {menuLists}
                 </div>
-                <FontAwesomeIcon
-                    icon={open ? faTimes : faBars}
-                    onClick={() => setOpen(!open)}
-                    className="text-black w-6 h-6 cursor-pointer md:hidden"/>
+                <label htmlFor="dashboardDrawer" className="border cursor-pointer border-black px-2 py-[4px] rounded drawer-button lg:hidden">Open drawer</label>
+                
                 {open && (
                     <div className="bg-slate-600 absolute top-full left-0 flex flex-col w-full pb-8 md:hidden">
                         <div className=" flex gap-4 flex-col items-center text-xl">

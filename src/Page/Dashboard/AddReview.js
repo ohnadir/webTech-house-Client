@@ -35,7 +35,6 @@ const AddReview = () => {
                     })
                     .then(res=> res.json())
                     .then(data => {
-                        console.log(data);
                         toast.success('Review Added Successfully');
                         reset();
                     })
@@ -97,14 +96,13 @@ const AddReview = () => {
                                 })}
                             />
                             <label className="label">
-                                {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                                {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                {errors.review?.type === 'required' && <span className="label-text-alt text-red-500">{errors.review.message}</span>}
                             </label>
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <input
                                 type="file"
-                                className="input input-bordered w-full max-w-xs"
+                                className="input input-bordered w-full max-w-xs pt-[6px]"
                                 {...register("image", {
                                     required: {
                                         value: true,
@@ -116,7 +114,7 @@ const AddReview = () => {
                                 {errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>}
                             </label>
                         </div>
-                        <input className='btn w-full max-w-xs text-white' type="submit" value="Add" />
+                        <input className='btn w-full max-w-xs text-white' type="submit" value="Add Review" />
                     </form>
                 </div>
             </div>
