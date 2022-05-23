@@ -1,7 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
-const UpdateModal = () => {
+const UpdateModal = ({_id, setUpdate}) => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const onSubmit = data => { 
@@ -11,7 +12,7 @@ const UpdateModal = () => {
             number: data.number,
             linkedin: data.linkedin
         }
-        fetch('https://jsonplaceholder.typicode.com/posts/1', {
+        fetch(`http://localhost:5000/userInfo/${_id}`, {
             method: 'PUT',
             body: JSON.stringify(information),
             headers: {
@@ -20,7 +21,12 @@ const UpdateModal = () => {
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data)
+            if (data.insertedId) {
+                toast.success('User Update  Successfully');
+                setUpdate(null)
+            } else {
+                toast('Try Again')
+            }
         });
         console.log(information);
         }

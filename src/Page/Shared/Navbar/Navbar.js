@@ -17,7 +17,7 @@ const Navbar = () => {
         signOut(auth);
     }
     const menuLists = <>
-        <CustomLink to='/review'>Review</CustomLink>
+        <CustomLink to='/portfolio'>My Portfolio</CustomLink>
         <CustomLink to='/blogs'>Blogs</CustomLink>
         {
             user && <CustomLink to='/dashboard'>Dashboard</CustomLink>

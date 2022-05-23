@@ -20,6 +20,7 @@ const MyProfile = () => {
         getUserInfo()
         
     }, []);
+    
     return (
         <div className='mt-16 flex justify-center'>
             <div className=" w-96 shadow-xl p-4">
@@ -58,7 +59,8 @@ const MyProfile = () => {
 
             {
                 update && <UpdateModal
-                setUpdate={setUpdate}
+                    setUpdate={setUpdate}
+                    _id={userInfo[0]?._id}
                 ></UpdateModal>
             }
         </div>

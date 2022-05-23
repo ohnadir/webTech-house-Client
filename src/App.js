@@ -14,6 +14,7 @@ import Purchase from './Page/Purchase/Purchase';
 import MyOrders from './Page/Dashboard/MyOrders';
 import MyProfile from './Page/Dashboard/MyProfile';
 import AddReview from './Page/Dashboard/AddReview';
+import MyPortFolio from './Page/MyPortFolio.js/MyPortFolio';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path='/' element={<Home/>} ></Route>
         <Route path='/home' element={<Home/>} ></Route>
         <Route path='/login' element={<Login/>}></Route>
+        <Route path='/portfolio' element={<MyPortFolio/>}></Route>
         <Route path='/signup' element={<Signup />} ></Route>
         <Route path='/purchase/:id' element={
           <RequireAuth><Purchase/></RequireAuth>
