@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PurchaseModal from './PurchaseModal';
+import { useQuery } from 'react-query';
 
 const Purchase = () => {
     const { id } = useParams()

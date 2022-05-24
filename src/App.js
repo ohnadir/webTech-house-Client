@@ -15,6 +15,7 @@ import MyOrders from './Page/Dashboard/MyOrders';
 import MyProfile from './Page/Dashboard/MyProfile';
 import AddReview from './Page/Dashboard/AddReview';
 import MyPortFolio from './Page/MyPortFolio.js/MyPortFolio';
+import Payment from './Page/Dashboard/Payment';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route index  element={<MyProfile/>}></Route>
             <Route path='myOrders' element={<MyOrders/>}></Route>
             <Route path='addReview' element={<AddReview/>}></Route>
+            <Route path='payment/:id' element={<Payment/>}></Route>
         </Route>
         <Route path='*' element={<NotFoundPage/>}></Route>
       </Routes>

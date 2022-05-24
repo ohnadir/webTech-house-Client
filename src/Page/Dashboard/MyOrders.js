@@ -31,6 +31,7 @@ const MyOrders = () => {
                             <th>Number</th>
                             <th>Total Price</th>
                             <th>Payment</th>    
+                            <th>Transaction ID</th>    
                         </tr>
                         </thead>
                         <tbody>
@@ -43,7 +44,18 @@ const MyOrders = () => {
                                     <td>{order.orderAmount}</td>
                                     <td>{order.phone}</td>
                                     <td>${order.totalPrice}</td>
-                                    <td>{(order.totalPrice && !order.paid) && <Link to={``}><button className='bg-zinc-500 text-white px-3 rounded py-1'>Payment</button></Link>}</td>
+                                    
+                                    <td>{
+                                        (order.totalPrice && !order.paid)
+                                        ? 
+                                        <Link to={`/dashboard/payment/${order._id}`}><p className='bg-zinc-500 text-white px-3 text-center rounded py-1'>Payment</p></Link>  
+                                        :
+                                        <p className='bg-zinc-500 text-white text-center px-3 rounded py-1'>Paid</p>
+                                    }
+                                    </td>
+                                    <td>{order.transactionId}</td>
+                                    {/* <td>{(order.totalPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='bg-zinc-500 text-white px-3 rounded py-1'>Payment</button></Link>}</td>
+                                    <td>{(order.totalPrice && order.paid) && <p className='bg-zinc-500 text-white px-3 rounded py-1'>Paid</p>}</td> */}
 
                                 </tr>)
                             }

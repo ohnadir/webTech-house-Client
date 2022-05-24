@@ -21,7 +21,6 @@ const PurchaseModal = ({ purchase, setPurchase }) => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            
             });
     }
 
@@ -29,7 +28,7 @@ const PurchaseModal = ({ purchase, setPurchase }) => {
     const handleSubmit = event => {
         event.preventDefault();
         const orderAmount = event.target.quantity.value
-        const totalPrice = parseInt(price) * parseInt(orderAmount);
+        const totalPrice = price;
         if (orderAmount < orderQuantity) {
             return alert('please Enter Order Quantity 500 or Longer')
         }
