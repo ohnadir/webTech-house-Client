@@ -13,23 +13,18 @@ const BusinessSummary = () => {
                 <div className='mx-auto text-center'>
                     <img className='w-20 mx-auto mb-4' src={CrossFlag} alt="" />
                     <p><CountUp end={150} /></p>
-                    
-                    <p>Countries</p>
                 </div>
                 <div className='mx-auto text-center'>
                     <img className='w-20 mx-auto mb-4' src={Users} alt="" />
                     <p><CountUp end={535} />+</p>
-                    <p>Projects</p>
                 </div>
                 <div className='mx-auto text-center'>
                     <img className='w-20 mx-auto mb-4' src={Projects} alt="" />
                     <p><CountUp end={237} />+</p>
-                    <p>Happy Clients</p>
                 </div>
                 <div className='mx-auto text-center'>
                     <img className='w-20 mx-auto mb-4' src={Likes} alt="" />
                     <p><CountUp end={432} />+</p>
-                    <p>FeedBack</p>
                 </div>
             </div>
         </div>
