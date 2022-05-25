@@ -2,7 +2,6 @@ import React from 'react';
 import support from '../../assets/customer-service.svg'
 import delivery from '../../assets/truck.svg'
 import price from '../../assets/dollar-sign.svg';
-import order from '../../assets/courier.svg';
 import exchange from '../../assets/money-back.svg';
 
 const Service = () => {
