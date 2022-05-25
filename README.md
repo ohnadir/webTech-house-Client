@@ -2,9 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+* On the Home page contains a navbar, header, parts section, review section and also footer
+* parts section has 6 items to for
+* In the Business summary number has count up
+* Log in implement with exiting account and also show valid error
+* purchase page protected and book purchase 
+* Normal user see on the dash board my profile, my order etc 
+* If admin log hee will see make admin, manage all purchase ,add a parts, manage parts 
+* On the my profile route it will access to upload information and update information 
 
-In the project directory, you can run:
 
 ### `npm start`
 

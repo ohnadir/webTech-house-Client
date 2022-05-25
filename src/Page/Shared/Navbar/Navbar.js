@@ -44,7 +44,7 @@ const Navbar = () => {
                 <div className='flex gap-6 items-center hidden md:flex'>
                     {menuLists}
                 </div>
-                <label htmlFor="dashboardDrawer" className="border cursor-pointer border-black px-2 py-[4px] rounded drawer-button lg:hidden">Open drawer</label>
+                <label htmlFor="dashboardDrawer" className="border cursor-pointer border-black px-2 py-[4px] rounded drawer-button lg:hidden">Open Sub-Dash</label>
                 
                 {open && (
                     <div className="bg-slate-600 absolute top-full left-0 flex flex-col w-full pb-8 md:hidden">
