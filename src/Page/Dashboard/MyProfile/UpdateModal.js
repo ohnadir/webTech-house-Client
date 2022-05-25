@@ -1,9 +1,12 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import auth from '../../Login/firebase.init';
 
-const UpdateModal = ({_id, setUpdate}) => {
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+const UpdateModal = ({  setUpdate, refetch }) => {
+    const { register, formState: { errors }, handleSubmit } = useForm();
+    const [user] = useAuthState(auth);
 
     const onSubmit = data => { 
         const information = {
@@ -12,23 +15,20 @@ const UpdateModal = ({_id, setUpdate}) => {
             number: data.number,
             linkedin: data.linkedin
         }
-        fetch(`http://localhost:5000/userInfo/${_id}`, {
+        fetch(`http://localhost:5000/userInfo/${user?.email}`, {
             method: 'PUT',
             body: JSON.stringify(information),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
         })
         .then((res) => res.json())
-        .then((data) => {
-            if (data.insertedId) {
+            .then((data) => {
+                setUpdate(null);
                 toast.success('User Update  Successfully');
-                setUpdate(null)
-            } else {
-                toast('Try Again')
-            }
+                refetch();
         });
-        console.log(information);
         }
     return (
         <div>

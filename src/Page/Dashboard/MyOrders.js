@@ -9,7 +9,11 @@ const MyOrders = () => {
     useEffect(() => {
         const getPurchaseItem = async () => {
             const email = user?.email;
-            fetch(`http://localhost:5000/purchase?email=${email}`)
+            fetch(`http://localhost:5000/purchase?email=${email}`, {
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
             .then(res => res.json())
             .then(data => setOrders(data));
         }
@@ -36,7 +40,7 @@ const MyOrders = () => {
                         </thead>
                         <tbody>
                             {
-                                orders.map((order, index)=> <tr>
+                                orders?.map((order, index)=> <tr>
                                     <th>{index + 1}</th>
                                     <td>{order.buyerName}</td>
                                     <td>{order.purchaseProduct}</td>
@@ -54,9 +58,6 @@ const MyOrders = () => {
                                     }
                                     </td>
                                     <td>{order.transactionId}</td>
-                                    {/* <td>{(order.totalPrice && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='bg-zinc-500 text-white px-3 rounded py-1'>Payment</button></Link>}</td>
-                                    <td>{(order.totalPrice && order.paid) && <p className='bg-zinc-500 text-white px-3 rounded py-1'>Paid</p>}</td> */}
-
                                 </tr>)
                             }
                         

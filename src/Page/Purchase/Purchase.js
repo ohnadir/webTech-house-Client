@@ -2,17 +2,38 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PurchaseModal from './PurchaseModal';
 import { useQuery } from 'react-query';
+import Loading from '../Shared/Loading';
 
 const Purchase = () => {
     const { id } = useParams()
-    const [product, setProduct] = useState([]);
-    const [purchase, setPurchase] = useState([]);
+    // const [product, setProduct] = useState([]);
+    const [purchase, setPurchase] = useState(null);
+
+    
+    const { data: product , isLoading, refetch } = useQuery('parts', () =>
+    fetch(`http://localhost:5000/parts/${id}`, {
+        method: 'GET',
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json())
+    
+    )
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
+
     const { name, img, price, info, orderQuantity, quantity, _id } = product;
-    useEffect(() => {
-        fetch(`http://localhost:5000/parts/${id}`)
+   /*  useEffect(() => {
+        fetch(`http://localhost:5000/parts/${id}`, {
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data =>setProduct(data));
-    }, [id]);
+    }, [id]); */
     return (
         <div className='flex justify-center items-center h-screen'>
             <div className="card w-72 md:w-96 bg-base-100 shadow-xl image-full mx-auto">
@@ -37,6 +58,7 @@ const Purchase = () => {
             {purchase && <PurchaseModal
                 purchase={purchase}
                 setPurchase={setPurchase}
+                refetch={refetch}
             ></PurchaseModal>}
         </div>
     );

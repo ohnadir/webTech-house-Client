@@ -1,8 +1,7 @@
-import { async } from '@firebase/util';
 import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useToken from '../../Hooks/useToken';
 import Loading from '../Shared/Loading';
 import auth from './firebase.init';
@@ -11,7 +10,7 @@ const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signInWithGoogle, gUser, GLoading, gError] = useSignInWithGoogle(auth);
     const [updateProfile, updating, updatingError] = useUpdateProfile(auth);
-    const navigate = useNavigate();
+    
     const [
         createUserWithEmailAndPassword,
         user,
@@ -19,18 +18,20 @@ const Signup = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [token] = useToken(user || gUser);
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({displayName: data.name})
-        console.log(data)
     };
 
     useEffect(() => {
         if (token) {
-            navigate('/home')
+            navigate(from, { replace: true });
         }
-    }, [token, navigate]);
+    }, [token, from, navigate]);
 
     
     if (loading || GLoading || updating) {

@@ -2,11 +2,12 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const AddReview = () => {
+const AddParts = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const imagesStorageKey = 'abd7b79a50a5c7cfbfaf7b71ee36e9be';
     const onSubmit = data => {
+        console.log(data);
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -20,27 +21,34 @@ const AddReview = () => {
             .then(result => {
                 if (result.success) {
                     const img = result.data.url;
-                    const review = {
-                        name: data.name,
-                        rating: data.rating,
-                        review: data.review,
+                    const parts = {
+                        name: data.parts,
+                        quantity: data.availableQuantity,
+                        orderQuantity: data.orderQuantity,
+                        price: data.price,
                         img: img
                     }
-                    fetch('http://localhost:5000/reviews', {
+                    fetch('http://localhost:5000/parts', {
                         method: "POST",
-                        body: JSON.stringify(review),
+                        body: JSON.stringify(parts),
                         headers: {
-                            'Content-type': 'application/json'
+                            'content-type': 'application/json',
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                         },
                     })
-                    .then(res=> res.json())
+                        .then(res => {
+                            if (res.status === 401 || res.status === 403) {
+                                toast('Fail to Add Parts')
+                            }
+                            return res.json()
+                        })
                     .then(data => {
-                        toast.success('Review Added Successfully');
+                        toast.success('Parts Added Successfully');
                         reset();
                     })
                 }
                 else {
-                    toast.error('Failed add to Review')
+                    toast.error('Failed add to Parts')
                 }
                 
         })
@@ -49,54 +57,71 @@ const AddReview = () => {
         <div className='mt-16'>
             <div className="card w-96 bg-base-100 shadow-xl mx-auto">
                 <div className="card-body">
-                    <h2 className="card-title">Add Review</h2>
+                    <h2 className=" text-2xl font-semibold text-center mb-6">Add Parts</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full max-w-xs">
                             <input
                                 type="text"
-                                placeholder="Enter Name"
+                                placeholder="Enter Parts Name"
                                 className="input input-bordered w-full max-w-xs"
-                                {...register("name", {
+                                {...register("parts", {
                                     required: {
                                         value: true,
-                                        message: 'Name is Required'
+                                        message: 'Parts Name is Required'
                                     }
                                 })}
                             />
                             <label className="label">
-                                {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
+                                {errors.parts?.type === 'required' && <span className="label-text-alt text-red-500">{errors.parts.message}</span>}
                             </label>
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <input
                                 type="number"
-                                placeholder="Enter Ratings"
+                                placeholder="Enter Order Quantity"
                                 className="input input-bordered w-full max-w-xs"
-                                {...register("rating", {
+                                {...register("orderQuantity", {
                                     required: {
                                         value: true,
-                                        message: 'Ratings is Required'
+                                        message: 'Order Quantity is Required'
                                     }
                                 })}
                             />
                             <label className="label">
-                                {errors.rating?.type === 'required' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
+                                {errors.orderQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.orderQuantity.message}</span>}
                             </label>
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <input
-                                type="text"
-                                placeholder="Enter Review"
+                                type="number"
+                                placeholder="Enter Total Available Quantity"
                                 className="input input-bordered w-full max-w-xs"
-                                {...register("review", {
+                                {...register("availableQuantity", {
                                     required: {
                                         value: true,
-                                        message: 'Review is Required'
+                                        message: 'Available Quantity is Required'
                                     }
                                 })}
                             />
                             <label className="label">
-                                {errors.review?.type === 'required' && <span className="label-text-alt text-red-500">{errors.review.message}</span>}
+                                {errors.availableQuantity?.type === 'required' && <span className="label-text-alt text-red-500">{errors.availableQuantity.message}</span>}
+                            </label>
+                        </div>
+
+                        <div className="form-control w-full max-w-xs">
+                            <input
+                                type="number"
+                                placeholder="Enter Price"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("price", {
+                                    required: {
+                                        value: true,
+                                        message: 'Price is Required'
+                                    }
+                                })}
+                            />
+                            <label className="label">
+                                {errors.price?.type === 'required' && <span className="label-text-alt text-red-500">{errors.price.message}</span>}
                             </label>
                         </div>
                         <div className="form-control w-full max-w-xs">
@@ -114,7 +139,7 @@ const AddReview = () => {
                                 {errors.image?.type === 'required' && <span className="label-text-alt text-red-500">{errors.image.message}</span>}
                             </label>
                         </div>
-                        <input className='btn w-full max-w-xs text-white' type="submit" value="Add Review" />
+                        <input className='btn w-full max-w-xs text-white' type="submit" value="Add Parts" />
                     </form>
                 </div>
             </div>
@@ -122,4 +147,4 @@ const AddReview = () => {
     );
 };
 
-export default AddReview;
+export default AddParts;

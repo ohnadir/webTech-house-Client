@@ -7,6 +7,7 @@ import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import Loading from '../../Page/Shared/Loading'
 import { async } from '@firebase/util';
 import { toast } from 'react-toastify';
+import useToken from '../../Hooks/useToken';
 
 
 const Login = () => {
@@ -20,7 +21,9 @@ const Login = () => {
         user,
         loading,
         error,
-      ] = useSignInWithEmailAndPassword(auth);
+    ] = useSignInWithEmailAndPassword(auth);
+    const [token] = useToken(user || gUser);
+    
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password);
         console.log(data)

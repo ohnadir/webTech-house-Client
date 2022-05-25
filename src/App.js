@@ -16,6 +16,10 @@ import MyProfile from './Page/Dashboard/MyProfile';
 import AddReview from './Page/Dashboard/AddReview';
 import MyPortFolio from './Page/MyPortFolio.js/MyPortFolio';
 import Payment from './Page/Dashboard/Payment';
+import ManageParts from './Page/Dashboard/Admin/ManageParts';
+import MakeAdmin from './Page/Dashboard/Admin/MakeAdmin';
+import ManageAllPurchase from './Page/Dashboard/Admin/ManageAllPurchase';
+import AddParts from './Page/Dashboard/Admin/AddParts';
 
 
 function App() {
@@ -33,10 +37,14 @@ function App() {
         }></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
-            <Route index  element={<MyProfile/>}></Route>
-            <Route path='myOrders' element={<MyOrders/>}></Route>
-            <Route path='addReview' element={<AddReview/>}></Route>
-            <Route path='payment/:id' element={<Payment/>}></Route>
+          <Route index  element={<MyProfile/>}></Route>
+          <Route path='myOrders' element={<MyOrders/>}></Route>
+          <Route path='addReview' element={<AddReview/>}></Route>
+          <Route path='payment/:id' element={<Payment />}></Route>
+          <Route path='makeAdmin' element={<MakeAdmin/>}></Route>
+          <Route path='manageParts' element={<ManageParts/>}></Route>
+          <Route path='allPurchase' element={<ManageAllPurchase/>}></Route>
+          <Route path='addParts' element={<AddParts/>}></Route>
         </Route>
         <Route path='*' element={<NotFoundPage/>}></Route>
       </Routes>

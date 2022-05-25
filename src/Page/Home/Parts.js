@@ -5,7 +5,11 @@ const Parts = () => {
     const [parts, setParts] = useState([]);
     
     useEffect(() => {
-        fetch('http://localhost:5000/parts')
+        fetch('http://localhost:5000/parts', {
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setParts(data))
     }, []);
@@ -14,7 +18,7 @@ const Parts = () => {
             <h1 className='text-center text-3xl mb-10'>Available Parts</h1>
             <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3'>
                 {
-                    parts.map(part => <Part
+                    parts?.map(part => <Part
                         key={part._id}
                         part={part}
                     ></Part>)

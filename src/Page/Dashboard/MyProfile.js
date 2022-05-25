@@ -3,23 +3,27 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../Login/firebase.init';
 import UploadModal from './MyProfile/UploadModal';
 import UpdateModal from './MyProfile/UpdateModal';
+import { useQuery } from 'react-query';
+import Loading from '../Shared/Loading';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
     const [editInfo, setEditInfo] = useState([]);
     const [update, setUpdate] = useState([]);
-    const [userInfo, setUserInfo] = useState([]);
-    
-    useEffect(() => {
-        const getUserInfo = async () => {
-            const email = user?.email;
-            fetch(`http://localhost:5000/userInfo?email=${email}`)
-            .then(res => res.json())
-            .then(data => setUserInfo(data))
-        }
-        getUserInfo()
+    const email = user?.email;
+
+    const { data:userInfo , isLoading, refetch } = useQuery('userInfo', () =>
+        fetch(`http://localhost:5000/userInfo?email=${email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => res.json())
         
-    }, []);
+    )
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     
     return (
         <div className='mt-16 flex justify-center'>
@@ -45,10 +49,10 @@ const MyProfile = () => {
                 <div className='flex gap-2 justify-end mt-5'>
                     <label
                         htmlFor="uploadModal"
-                        className="bg-slate-700 text-white px-2 py-[4px] rounded">Upload Information</label>
+                        className="bg-slate-700 cursor-pointer text-white px-2 py-[4px] rounded">Upload Information</label>
                     <label
                         htmlFor="updateModal"
-                        className="bg-slate-700 text-white px-2 py-[4px] rounded">Update Profile</label>
+                        className="bg-slate-700 cursor-pointer text-white px-2 py-[4px] rounded">Update Profile</label>
                 </div>
             </div>
             {
@@ -61,6 +65,7 @@ const MyProfile = () => {
                 update && <UpdateModal
                     setUpdate={setUpdate}
                     _id={userInfo[0]?._id}
+                    refetch={refetch}
                 ></UpdateModal>
             }
         </div>
