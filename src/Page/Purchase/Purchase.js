@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PurchaseModal from './PurchaseModal';
 import { useQuery } from 'react-query';

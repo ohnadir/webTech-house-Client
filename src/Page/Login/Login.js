@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import Loading from '../../Page/Shared/Loading'
 import { toast } from 'react-toastify';
@@ -12,7 +12,7 @@ import useToken from '../../Hooks/useToken';
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [email, setEmail] = useState('');
-    const navigate = useNavigate();
+
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
     const [
@@ -22,6 +22,10 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const [token] = useToken(user || gUser);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password);
@@ -31,9 +35,11 @@ const Login = () => {
     if (sending || gLoading || loading) {
         return <Loading></Loading>;
     }
-    if (user || gUser ) {
-        navigate('/home')
+
+    if (token) {
+        navigate(from, { replace: true });
     }
+    
     let signInError;
     if ( error || gError) {
         signInError = <p className='text-red-600'><small>{gError?.message} || {error?.message}</small></p>

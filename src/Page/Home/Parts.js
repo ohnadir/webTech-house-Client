@@ -1,17 +1,18 @@
-import React from 'react';
-import { useQuery } from 'react-query';
-import Loading from '../Shared/Loading';
+import React, { useEffect, useState } from 'react';
 import Part from './Part';
 
 const Parts = () => {
+    const [ parts , setParts] = useState([]);
 
-    const { data: parts , isLoading } = useQuery('parts', () =>
-    fetch('https://sleepy-hollows-57490.herokuapp.com/parts').then(res => res.json())
+    useEffect(() => {
+        fetch('https://sleepy-hollows-57490.herokuapp.com/parts')
+        .then(response => response.json())
+        .then(data => {
+            setParts(data)
+        })
+    },[])
+
     
-    )
-    if (isLoading) {
-        return <Loading></Loading>
-    }
     return (
         <div className='mt-20'>
             <h1 className='text-center text-3xl mb-10'>Available Parts</h1>

@@ -75,7 +75,7 @@ const PurchaseModal = ({ purchase, setPurchase, refetch }) => {
                         <input type="text" name="productName" disabled  value={name} className="input input-bordered w-full max-w-xs" />
                         <input type="text" name="name" disabled  value={user?.displayName || ''} className="input input-bordered w-full max-w-xs" />
                         <input type="text" name="email" disabled value={user?.email || ''} className="input input-bordered w-full max-w-xs" />
-                        <input required type="number" name="quantity" placeholder='Order Quantity' className="input input-bordered w-full max-w-xs" />
+                        <input required type="number" name="quantity" min={orderQuantity} placeholder={`Minimum Order Quantity ${orderQuantity}`} className="input input-bordered w-full max-w-xs" />
                         <input required type="number" name="phone" placeholder='Phone Number' className="input input-bordered w-full max-w-xs" />
                         <input
                             disabled={quantity === 0}
