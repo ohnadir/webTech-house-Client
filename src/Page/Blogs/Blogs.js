@@ -47,10 +47,12 @@ const Blogs = () => {
                 </div>
                 <div class="collapse-content border "> 
                     <p className='pt-2'>
-                        প্রোটোটাইপল ইনহেরিট্যান্স হল জাভাস্ক্রিপ্টের একটি বৈশিষ্ট্য যা বস্তুতে পদ্ধতি এবং বৈশিষ্ট্য যোগ করতে ব্যবহৃত হয়।
-                        এটি এমন একটি পদ্ধতি যার মাধ্যমে একটি বস্তু অন্য বস্তুর বৈশিষ্ট্য এবং পদ্ধতির উত্তরাধিকারী হতে পারে।
-                        ঐতিহ্যগতভাবে, একটি বস্তুর প্রোটোটাইপ পেতে এবং সেট করার জন্য,
-                        আমরা Object.getPrototypeOf এবং Object.setPrototypeOf ব্যবহার করি।
+                        জাভাস্ক্রিপ্ট একটি প্রোটোটাইপ-ভিত্তিক, অবজেক্ট ওরিয়েন্টেড প্রোগ্রামিং ভাষা।
+                        ES6 আপডেটের পরে, জাভাস্ক্রিপ্ট  এর জন্য অনুমতি দিয়েছে, যার অর্থ বস্তু এবং পদ্ধতিগুলি ভাগ করা, প্রসারিত এবং অনুলিপি করা যেতে পারে।
+
+                        অবজেক্টের মধ্যে ভাগ করা ডেটা ,  ফাংশন এবং স্টেট  এর সহজ উত্তরাধিকার তৈরি করে।
+
+                        জাভাস্ক্রিপ্ট হল প্রোটোটাইপ-সক্ষম ভাষার মধ্যে সবচেয়ে সাধারণ, এবং এর ক্ষমতা তুলনামূলকভাবে অনন্য।
                     </p>
                 </div>
             </div>
@@ -60,7 +62,9 @@ const Blogs = () => {
                     You have an array of products. Each object has a name, price, description, etc. How will you implement a search to find products by name?
                 </div>
                 <div class="collapse-content border "> 
-                    <p className='pt-2'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae perspiciatis dicta aperiam ducimus expedita deleniti harum provident at? Illum inventore nam dignissimos quas ullam mollitia, eum cum tempore recusandae. Eaque placeat doloremque nesciunt perferendis quos autem obcaecati magnam voluptatibus, mollitia aut aliquid a nam adipisci odio magni blanditiis consectetur ut itaque accusantium totam reiciendis. Sunt unde dolorum optio, expedita, sint voluptates velit dolor ea porro ullam doloremque possimus quibusdam amet perspiciatis soluta excepturi cum iusto doloribus? Minima natus beatae delectus.</p>
+                    <p className='pt-2'>আরে থেকে কোন প্রোডাক্ট সার্চ করতে সম্ভব নাম  কোয়েরি দ্বারা । ডাটাবেইজ থেকে কোন নির্দিষ্ট প্রোডাক্ট খুজে বের করার জন্য কোয়েরি করে কালেকশন থেকে কোয়েরির মাধ্যমে করা সম্ভব । আর এই প্রক্রিয়া টি করার জন্য সর্ব প্রথম ক্লাইন্ট সাইট থেকে ব্যাকেন্ডে রিকোয়েষ্ট পাঠাতে হবে ।
+                    ক্লাইন্ট সাইট সেই রিকোয়েষ্ট গ্রহন করের নাম দিয়ে খুজে দিবে । আর এই প্রক্রিয়া দিয়েই সার্চ করার সম্ভব / 
+                    </p>
                 </div>
             </div>
             <div class="collapse">
@@ -69,7 +73,11 @@ const Blogs = () => {
                     What is a unit test? Why should write unit tests?
                 </div>
                 <div class="collapse-content border "> 
-                    <p className='pt-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint odio impedit, soluta quibusdam saepe tempora ullam voluptatum. Maxime quos quidem, illo natus officiis nobis dolore nisi, iure et non at sequi reiciendis enim pariatur soluta, aliquid voluptatem rem laborum aperiam earum cupiditate. Animi accusantium harum illum iure in ipsam architecto vitae inventore ut officia sit, voluptatum facilis voluptate cupiditate aperiam! Optio similique doloremque expedita repellat sed iure adipisci. Necessitatibus numquam possimus nihil iste accusamus dolores quasi quis minus placeat vero itaque praesentium illum a illo tenetur, dolor nisi dicta magni, aliquam earum nulla commodi, blanditiis velit vitae? Magnam, recusandae labore!</p>
+                    <p className='pt-2'>ইউনিট টেস্টিং হল একটি সফ্টওয়্যার পরীক্ষার কৌশল যার মাধ্যমে সফ্টওয়্যারের পৃথক ইউনিটগুলি যেমন কম্পিউটার প্রোগ্রাম মডিউলের গ্রুপ, ব্যবহারের পদ্ধতি এবং অপারেটিং পদ্ধতিগুলি ব্যবহারের জন্য উপযুক্ত কিনা তা নির্ধারণ করতে পরীক্ষা করা হয় ।
+                    ইউনিট টেস্টিং ডেভেলপারদের একটি ইউনিট দ্বারা কী কার্যকারিতা প্রদান করা হয় এবং ইউনিট API এর একটি প্রাথমিক বোঝার জন্য কীভাবে এটি ব্যবহার করতে হয় তা শিখতে দেয়।
+                    ইউনিট টেস্টিং প্রোগ্রামারকে কোড পরিমার্জন করতে এবং মডিউলটি সঠিকভাবে কাজ করে তা নিশ্চিত করতে দেয়।
+                    ইউনিট পরীক্ষা অন্যদের সম্পূর্ণ হওয়ার জন্য অপেক্ষা না করে প্রকল্পের অংশগুলি পরীক্ষা করতে সক্ষম করে।
+                    </p>
                 </div>
             </div>
         </div>
