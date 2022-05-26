@@ -7,8 +7,6 @@ const RemoveModal = ({ deletingPurchase, refetch, setDeletingPurchase }) => {
     
     // handle Remove unpaid purchase
     const handleRemove = (id) => {
-        console.log(id);
-
         fetch(`https://sleepy-hollows-57490.herokuapp.com/allPurchase/${_id}`, {
             method: 'DELETE',
             headers: {

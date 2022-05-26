@@ -1,12 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import auth from '../Login/firebase.init';
+import Loading from '../Shared/Loading';
+import CancelPurchaseModal from './CancelPurchaseModal'
 
 const MyOrders = () => {
-    const [orders, setOrders] = useState([]);
+    const [cancelPurchase, setCancelPurchase] = useState(null);
     const [user] = useAuthState(auth);
-    useEffect(() => {
+
+    const email = user?.email;
+    const { data:orders , isLoading, refetch } = useQuery('orders', () =>
+        fetch(`https://sleepy-hollows-57490.herokuapp.com/purchase?email=${email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => res.json())
+        
+    )
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+    /* useEffect(() => {
         const getPurchaseItem = async () => {
             const email = user?.email;
             fetch(`https://sleepy-hollows-57490.herokuapp.com/purchase?email=${email}`, {
@@ -19,7 +36,7 @@ const MyOrders = () => {
         }
         getPurchaseItem()
         
-    }, []);
+    }, []); */
     return (
         <div  className='mt-16'>
             <div>
@@ -61,18 +78,24 @@ const MyOrders = () => {
                                     <td>{
                                         !order.paid &&
                                         <label
-                                            // htmlFor='cancelPurchaseModal' 
-                                            // onClick={()=>setCancelPurchase(order)}
-                                            className='bg-zinc-500 text-white text-center px-3 rounded py-1'>
-                                            Cancel
-                                        </label>
-                                    }
+                                                onClick={()=>setCancelPurchase(order)}
+                                                htmlFor="cancelModal"
+                                                className="bg-zinc-500 cursor-pointer text-white px-3 text-center rounded py-1">
+                                                Cancel</label>
+                                        }
                                     </td>
                                 </tr>)
                             }
                         
                         </tbody>
                     </table>
+                    {
+                        cancelPurchase && <CancelPurchaseModal
+                            setCancelPurchase={setCancelPurchase}
+                            cancelPurchase={cancelPurchase}
+                            refetch={refetch}
+                        ></CancelPurchaseModal>
+                    }
                 </div>
             </div>
         </div>
