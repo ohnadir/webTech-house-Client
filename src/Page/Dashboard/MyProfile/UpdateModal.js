@@ -15,7 +15,7 @@ const UpdateModal = ({  setUpdate, refetch }) => {
             number: data.number,
             linkedin: data.linkedin
         }
-        fetch(`http://localhost:5000/userInfo/${user?.email}`, {
+        fetch(`https://sleepy-hollows-57490.herokuapp.com/userInfo/${user?.email}`, {
             method: 'PUT',
             body: JSON.stringify(information),
             headers: {

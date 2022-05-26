@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Getting Started with webTech House
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [webTech House](https://webtech-house-b3de0.web.app/).
 
 * On the Home page contains a navbar, header, parts section, review section and also footer
 * parts section has 6 items to for

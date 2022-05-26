@@ -17,7 +17,7 @@ const UploadModal = ({setEditInfo}) => {
             email: user.email
         }
 
-        fetch('http://localhost:5000/userInfo', {
+        fetch('https://sleepy-hollows-57490.herokuapp.com/userInfo', {
             method: 'POST',
             body: JSON.stringify(information),
             headers: {
