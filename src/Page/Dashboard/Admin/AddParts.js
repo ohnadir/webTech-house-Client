@@ -7,7 +7,6 @@ const AddParts = () => {
 
     const imagesStorageKey = 'abd7b79a50a5c7cfbfaf7b71ee36e9be';
     const onSubmit = data => {
-        console.log(data);
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);

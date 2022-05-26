@@ -9,7 +9,7 @@ const Part = ({ part }) => {
                 <img className='max-w-[200px] mx-auto' src={img} alt="" />
                 <div className='pl-2'>
                     <p>{name}</p>
-                    <p className='my-3'>{info.slice(0,62) + '..'}</p>
+                    <p className='my-3'>{info?.slice(0,62) + '..'}</p>
                     <p>Order Quantity: {orderQuantity}</p>
                     <p>Available Quantity: {quantity}</p>
                     <p>Price per Unit: <span className='font-bold'>${price}</span></p>
