@@ -34,7 +34,7 @@ const AddParts = () => {
                         headers: {
                             'content-type': 'application/json',
                             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                        },
+                        }
                     })
                         .then(res => {
                             if (res.status === 401 || res.status === 403) {
