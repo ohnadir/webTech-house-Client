@@ -31,7 +31,7 @@ const AddReview = () => {
                         body: JSON.stringify(review),
                         headers: {
                             'Content-type': 'application/json'
-                        },
+                        }
                     })
                     .then(res=> res.json())
                     .then(data => {

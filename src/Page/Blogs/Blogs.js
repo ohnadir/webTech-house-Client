@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blogs = () => {
     return (
-        <div className=''>
+        <div className='grid grid-cols-1 gap-2'>
             <div className="collapse border">
                 <input type="checkbox" className="peer" /> 
                 <div className="collapse-title ">
