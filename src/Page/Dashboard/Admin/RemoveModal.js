@@ -9,7 +9,7 @@ const RemoveModal = ({ deletingPurchase, refetch, setDeletingPurchase }) => {
     const handleRemove = (id) => {
         console.log(id);
 
-        fetch(`http://localhost:5000/allPurchase/${_id}`, {
+        fetch(`https://sleepy-hollows-57490.herokuapp.com/allPurchase/${_id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

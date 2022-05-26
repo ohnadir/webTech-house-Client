@@ -28,7 +28,7 @@ const AddParts = () => {
                         price: data.price,
                         img: img
                     }
-                    fetch('http://localhost:5000/parts', {
+                    fetch('https://sleepy-hollows-57490.herokuapp.com/parts', {
                         method: "POST",
                         body: JSON.stringify(parts),
                         headers: {

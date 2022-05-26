@@ -89,7 +89,7 @@ const CheckoutForm = ({purchase}) => {
                 purchase: _id,
                 transactionId : paymentIntent.id
             }
-            fetch(`http://localhost:5000/purchase/${_id}`, {
+            fetch(`https://sleepy-hollows-57490.herokuapp.com/purchase/${_id}`, {
                 method: 'PATCH',
                 body: JSON.stringify(payment),
                 headers: {

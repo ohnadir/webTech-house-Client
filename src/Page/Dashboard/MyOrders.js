@@ -9,7 +9,7 @@ const MyOrders = () => {
     useEffect(() => {
         const getPurchaseItem = async () => {
             const email = user?.email;
-            fetch(`http://localhost:5000/purchase?email=${email}`, {
+            fetch(`https://sleepy-hollows-57490.herokuapp.com/purchase?email=${email}`, {
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }

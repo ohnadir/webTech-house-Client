@@ -8,7 +8,7 @@ const ManageAllPurchase = () => {
     const [deletingPurchase, setDeletingPurchase] = useState(null);
     
     const { data: allPurchase , isLoading, refetch } = useQuery('allPurchase', () =>
-        fetch('http://localhost:5000/allPurchase', {
+        fetch('https://sleepy-hollows-57490.herokuapp.com/allPurchase', {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -27,7 +27,7 @@ const ManageAllPurchase = () => {
             const shipped = {
                 shipped: true
             }
-            fetch(`http://localhost:5000/allPurchase/${id}`, {
+            fetch(`https://sleepy-hollows-57490.herokuapp.com/allPurchase/${id}`, {
                 method: 'PATCH',
                 body: JSON.stringify(shipped),
                 headers: {

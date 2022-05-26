@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
-import RemoveUserModal from './UserRemoveModal';
 
 const UsersRow = ({ user, index, refetch }) => {
-    const [removeUser, setRemoveUser] = useState(null);
+
     const handleAdmin = (email) => {
-        fetch(`http://localhost:5000/users/admin/${email}`, {
+        fetch(`https://sleepy-hollows-57490.herokuapp.com/users/admin/${email}`, {
             method: "PUT",
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -21,7 +20,7 @@ const UsersRow = ({ user, index, refetch }) => {
             })
     }
     const handleRemove = (id) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://sleepy-hollows-57490.herokuapp.com/users/${id}`, {
             method: "PUT",
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

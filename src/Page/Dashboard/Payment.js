@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
@@ -12,7 +12,7 @@ const Payment = () => {
     const { id } = useParams();
     
     const { data:purchase, isLoading } = useQuery(['purchase', id], () =>
-        fetch(`http://localhost:5000/purchase/${id}`, {
+        fetch(`https://sleepy-hollows-57490.herokuapp.com/purchase/${id}`, {
             method: 'GET',
             headers: {
                 'authorization' : `Bearer ${localStorage.getItem('accessToken')}`

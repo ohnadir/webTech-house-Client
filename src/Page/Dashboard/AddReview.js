@@ -26,7 +26,7 @@ const AddReview = () => {
                         review: data.review,
                         img: img
                     }
-                    fetch('http://localhost:5000/reviews', {
+                    fetch('https://sleepy-hollows-57490.herokuapp.com/reviews', {
                         method: "POST",
                         body: JSON.stringify(review),
                         headers: {

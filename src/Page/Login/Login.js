@@ -5,7 +5,6 @@ import auth from './firebase.init';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
 import Loading from '../../Page/Shared/Loading'
-import { async } from '@firebase/util';
 import { toast } from 'react-toastify';
 import useToken from '../../Hooks/useToken';
 

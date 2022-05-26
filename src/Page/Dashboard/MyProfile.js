@@ -13,7 +13,7 @@ const MyProfile = () => {
     const email = user?.email;
 
     const { data:userInfo , isLoading, refetch } = useQuery('userInfo', () =>
-        fetch(`http://localhost:5000/userInfo?email=${email}`, {
+        fetch(`https://sleepy-hollows-57490.herokuapp.com/userInfo?email=${email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

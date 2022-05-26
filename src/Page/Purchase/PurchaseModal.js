@@ -46,7 +46,7 @@ const PurchaseModal = ({ purchase, setPurchase, refetch }) => {
             totalPrice,
             phone: event.target.phone.value,
         }
-        fetch('http://localhost:5000/purchase', {
+        fetch('https://sleepy-hollows-57490.herokuapp.com/purchase', {
             method: "POST",
             body: JSON.stringify(purchase),
             headers: {

@@ -5,7 +5,7 @@ const CancelPurchaseModal = ({ setPartsRemove, refetch, partsRemove }) => {
     const { name, _id } = partsRemove;
 
     const handleRemove = (id) => {
-        fetch(`http://localhost:5000/purchase/${id}`, {
+        fetch(`https://sleepy-hollows-57490.herokuapp.com/purchase/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
