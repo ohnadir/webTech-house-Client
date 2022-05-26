@@ -6,12 +6,11 @@ import Loading from '../Shared/Loading';
 
 const Purchase = () => {
     const { id } = useParams()
-    // const [product, setProduct] = useState([]);
     const [purchase, setPurchase] = useState(null);
 
     
     const { data: product , isLoading, refetch } = useQuery('parts', () =>
-    fetch(`http://localhost:5000/parts/${id}`, {
+    fetch(`https://sleepy-hollows-57490.herokuapp.com/parts/${id}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

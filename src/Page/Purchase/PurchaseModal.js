@@ -11,7 +11,7 @@ const PurchaseModal = ({ purchase, setPurchase, refetch }) => {
     const handleQuantity = ([quantity, orderAmount]) => {
         const newQuantity = parseInt(quantity) - parseInt(orderAmount);
 
-        fetch(`http://localhost:5000/parts/${_id}`, {
+        fetch(`https://sleepy-hollows-57490.herokuapp.com/parts/${_id}`, {
             method: "PUT",
             body: JSON.stringify({newQuantity: newQuantity}),
             headers: {
