@@ -22,14 +22,14 @@ const PartsRemoveModal = ({ setPartsRemove, refetch, partsRemove }) => {
     }
     return (
         <div>
-            <input type="checkbox" id="partsRemoveModal" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box relative">
-                    <h3 class="text-lg font-bold">Are you sure to delete this Parts:- {name}</h3>
+            <input type="checkbox" id="partsRemoveModal" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box relative">
+                    <h3 className="text-lg font-bold">Are you sure to delete this Parts:- {name}</h3>
                     <p className='my-5'>If you Delete This Parts that item remove from Database</p>
                     <div className='flex gap-3 justify-end'>
-                        <label onClick={()=>handleRemove(_id)} class="btn">Delete</label>
-                        <label htmlFor="partsRemoveModal" class="btn">Close</label>
+                        <label onClick={()=>handleRemove(_id)} className="btn">Delete</label>
+                        <label htmlFor="partsRemoveModal" className="btn">Close</label>
                     </div>
                 </div>
             </div>

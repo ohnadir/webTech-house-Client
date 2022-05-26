@@ -27,11 +27,10 @@ const Signup = () => {
         await updateProfile({displayName: data.name})
     };
 
-    useEffect(() => {
-        if (token) {
+        if (user || gUser) {
             navigate(from, { replace: true });
         }
-    }, [token, from, navigate]);
+    
 
     
     if (loading || GLoading || updating) {

@@ -25,15 +25,15 @@ const RemoveModal = ({ deletingPurchase, refetch, setDeletingPurchase }) => {
     return (
         <div>
             
-            <input type="checkbox" id="removeModal" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box relative">
-                    <h3 class="text-lg font-bold">Are you sure to delete this Purchase:-  {purchaseProduct}</h3>
+            <input type="checkbox" id="removeModal" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box relative">
+                    <h3 className="text-lg font-bold">Are you sure to delete this Purchase:-  {purchaseProduct}</h3>
 
                     <p className='my-5'>If you Delete This Purchase that item remove from Database</p>
                     <div className='flex gap-3 justify-end'>
-                        <label onClick={handleRemove} class="btn">Delete</label>
-                        <label htmlFor="removeModal" class="btn">Close</label>
+                        <label onClick={handleRemove} className="btn">Delete</label>
+                        <label htmlFor="removeModal" className="btn">Close</label>
                     </div>
                 </div>
             </div>

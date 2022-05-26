@@ -26,7 +26,7 @@ const Navbar = () => {
             user ?
                 <button onClick={handleSignOut}>Sign out</button>
                 : 
-                <CustomLink to='/login'>Login</CustomLink>
+                <CustomLink to='/'>Login</CustomLink>
         }
         
     </>
