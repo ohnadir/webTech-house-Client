@@ -58,6 +58,16 @@ const MyOrders = () => {
                                     }
                                     </td>
                                     <td>{order.transactionId}</td>
+                                    <td>{
+                                        !order.paid &&
+                                        <label
+                                            // htmlFor='cancelPurchaseModal' 
+                                            // onClick={()=>setCancelPurchase(order)}
+                                            className='bg-zinc-500 text-white text-center px-3 rounded py-1'>
+                                            Cancel
+                                        </label>
+                                    }
+                                    </td>
                                 </tr>)
                             }
                         

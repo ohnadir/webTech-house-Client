@@ -30,7 +30,11 @@ const PurchaseModal = ({ purchase, setPurchase, refetch }) => {
         const orderAmount = event.target.quantity.value
         const totalPrice = price;
         if (orderAmount < orderQuantity) {
-            return alert('please Enter Order Quantity 500 or Longer')
+            return alert('please Enter Order Quantity 500 or Longer');
+        }
+
+        if (quantity < orderAmount) {
+            return toast('You order more then Available Quantity');
         }
         handleQuantity([quantity, orderAmount]);
         
