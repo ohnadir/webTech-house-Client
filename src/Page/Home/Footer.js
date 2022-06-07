@@ -2,8 +2,9 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className="mt-16">
-            <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
+        <div className=' bg-base-200'>
+            <div className="mt-16 max-w-7xl mx-auto px-2">
+            <footer className="footer footer-center p-10  text-base-content rounded">
                 <div className="grid grid-flow-col gap-4">
                     <a className="link link-hover">About us</a> 
                     <a className="link link-hover">Contact</a> 
@@ -21,6 +22,7 @@ const Footer = () => {
                     <p>Copyright © 2022 - All right reserved by WebTech House</p>
                 </div>
             </footer>
+        </div>
         </div>
         
     )

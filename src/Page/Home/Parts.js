@@ -14,11 +14,11 @@ const Parts = () => {
         .then(data => {
             setParts(data)
         })
-    },[])
+    },[parts])
 
     
     return (
-        <div className='mt-20'>
+        <div className='mt-20 max-w-7xl mx-auto px-2'>
             <h1 className='text-center text-3xl mb-10'>Available Parts</h1>
             <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3'>
                 {

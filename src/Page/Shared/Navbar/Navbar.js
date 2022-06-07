@@ -26,14 +26,15 @@ const Navbar = () => {
             user ?
                 <button onClick={handleSignOut}>Sign out</button>
                 : 
-                <CustomLink to='/'>Login</CustomLink>
+                <CustomLink to='/login'>Login</CustomLink>
         }
         
     </>
 
     return (
-        <div className=''>
-            <div className='flex items-center h-14 justify-between text-black  relative z-50'>
+        <div className='bg-base-200'>
+            <div className='max-w-7xl mx-auto px-2 '>
+            <div className=' flex items-center h-14 justify-between text-black  relative z-50'>
                 <FontAwesomeIcon
                     icon={open ? faTimes : faBars}
                     onClick={() => setOpen(!open)}
@@ -54,6 +55,7 @@ const Navbar = () => {
                     </div>
                 )}
             </div>
+        </div>
         </div>
     );
 };

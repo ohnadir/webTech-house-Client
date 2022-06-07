@@ -34,7 +34,7 @@ const ManageParts = () => {
                     </thead>
                     <tbody>
                         {
-                            parts?.map((part, index) => <tr>
+                            parts?.map((part, index) => <tr key={part._id}>
                             <th>{index + 1}</th>
                             <td>{part.name}</td>
                             <td>{part.orderQuantity}</td>

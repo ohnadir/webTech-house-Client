@@ -66,7 +66,7 @@ const ManageAllPurchase = () => {
                         </thead>
                         <tbody>
                             {
-                                allPurchase?.map((purchase, index)=> <tr>
+                                allPurchase?.map((purchase, index)=> <tr key={purchase._id}>
                                     <th>{index + 1}</th>
                                     <td>{purchase.buyerName}</td>
                                     <td>{purchase.purchaseProduct}</td>

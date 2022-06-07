@@ -24,7 +24,7 @@ import AddParts from './Page/Dashboard/Admin/AddParts';
 
 function App() {
   return (
-    <div className="max-w-7xl mx-auto px-2">
+    <div className="">
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>} ></Route>

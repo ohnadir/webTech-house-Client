@@ -7,7 +7,8 @@ import CountUp from 'react-countup';
 
 const BusinessSummary = () => {
     return (
-        <div className='mt-20 text-3xl mb-10 bg-red-50 py-16'>
+        <div className='bg-red-50'>
+            <div className='mt-20 text-3xl mb-10  py-16 max-w-7xl mx-auto px-2'>
             <h1 className='text-center mb-10'>Business Summary</h1>
             <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6 mx-auto'>
                 <div className='mx-auto text-center'>
@@ -27,6 +28,7 @@ const BusinessSummary = () => {
                     <p><CountUp end={432} />+</p>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

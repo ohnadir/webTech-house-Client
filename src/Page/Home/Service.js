@@ -6,7 +6,8 @@ import exchange from '../../assets/money-back.svg';
 
 const Service = () => {
     return (
-        <div className='mt-20 bg-[#f0f2f4] py-20'>
+        <div className='mt-  py-20 max-w-7xl mx-auto px-2'>
+            <p className='text-center text-3xl font-semibold mb-10'>Services & Policy</p>
             <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 mx-auto'>
                 <div className='mx-auto text-center'>
                     <img className='w-20 mx-auto mb-4' src={support} alt="" />

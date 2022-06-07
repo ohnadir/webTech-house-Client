@@ -9,10 +9,10 @@ const Dashboard = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
     return (
-        <div className='mt-6'>
+        <div className='mt-6 max-w-7xl mx-auto px-2'>
             <div className="drawer drawer-mobile">
                 <input id="dashboardDrawer" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content  text-center">
+                <div className="drawer-content  text-center mt-7">
                     <h2 className='text-2xl font-bold text-purple-500'>Welcome to your Dashboard</h2>
                     <Outlet />
                 </div> 
