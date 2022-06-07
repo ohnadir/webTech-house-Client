@@ -2,13 +2,14 @@
 
 This project was bootstrapped with [webTech House](https://webtech-house-b3de0.web.app/).
 
-* On the Home page contains a navbar, header, parts section, review section and also footer
-* parts section has 6 items to for
-* In the Business summary number has count up
-* Log in implement with exiting account and also show valid error
-* purchase page protected and book purchase 
-* Normal user see on the dash board my profile, my order etc 
-* If admin log hee will see make admin, manage all purchase ,add a parts, manage parts 
+* The Home page contains a navbar, header, parts section, review section and also footer
+* Parts section has 6 items for users can order.
+* In the Business summary number has count up functionality.
+* Log in implement with exiting account and also show valid error.
+* Purchase page protected an user can't access without login. 
+* Users see on the dashboard my profile, my order, add review, etc. 
+* If admin log he/she will see make admin, manage all purchase, add a parts, manage parts.
+* An admin can make admin other users, remove order, add new parts and update parts. 
 * On the my profile route it will access to upload information and update information 
 
 
