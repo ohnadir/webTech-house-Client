@@ -4,7 +4,6 @@ import { ToastContainer } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "./Page/Shared/Navbar/Navbar";
 import  Home from "./Page/Home/Home";
-import  Blogs from "./Page/Blogs/Blogs";
 import  NotFoundPage from "./Page/NotFoundPage/NotFoundPage";
 import  Login from "./Page/Login/Login";
 import  Signup from "./Page/Login/Signup";
@@ -20,22 +19,25 @@ import ManageParts from './Page/Dashboard/Admin/ManageParts';
 import MakeAdmin from './Page/Dashboard/Admin/MakeAdmin';
 import ManageAllPurchase from './Page/Dashboard/Admin/ManageAllPurchase';
 import AddParts from './Page/Dashboard/Admin/AddParts';
+import Cart from './Page/Cart/Cart';
+import Checkout from './Page/Checkout';
 
 
 function App() {
   return (
-    <div className="">
+    <div className="bg-white">
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>} ></Route>
         <Route path='/home' element={<Home/>} ></Route>
+        <Route path='/cart' element={<Cart/>} ></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/portfolio' element={<MyPortFolio/>}></Route>
         <Route path='/signup' element={<Signup />} ></Route>
+        <Route path='/checkout' element={<Checkout />} ></Route>
         <Route path='/purchase/:id' element={
           <RequireAuth><Purchase/></RequireAuth>
         }></Route>
-        <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
           <Route index  element={<MyProfile/>}></Route>
           <Route path='myOrders' element={<MyOrders/>}></Route>
